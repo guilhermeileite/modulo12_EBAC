@@ -9,14 +9,6 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         Preenchendo todas opções no checkout
         E validando minha compra ao final */
 
-    var faker = require('faker');
-
-    let nameFaker = faker.name.firstName()
-    let lastNameFaker = faker.name.lastName()
-    let companyNameFaker = faker.company.companyName()
-    let phoneFaker = faker.phone.phoneNumber('11 87552-4937')
-    let mailFaker = faker.internet.email()
-
     beforeEach(() => {
         cy.visit('minha-conta')
         cy.fixture('perfil').then(dados => {
@@ -25,9 +17,32 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         })
     });
 
-    it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
-        //TODO 
+    it.only('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
+        // adicionando o primeiro produto ao carrinho
+        cy.addProdutos('Abominable Hoodie', 'M', 'Red', 1)
+        cy.get('.single_add_to_cart_button')
+        cy.get('.woocommerce-message').should('contain', '“Abominable Hoodie” foi adicionado no seu carrinho.')
     });
 
+    it('Deve adicionar mais um produto ao carrinho', () => {
+        //adicionando o segundo produto ao carrinho
+        cy.addProdutos('Atlas Fitness Tank', 'S', 'Blue', 1)
+        cy.get('.single_add_to_cart_button')
+    });
 
+    it('Deve adicionar mais um produto ao carrinho', () => {
+        //adicionando o terceiro produto ao carrinho
+        //o produto está na página 6
+        cy.get(':nth-child(4) > .page-numbers').click()
+        cy.get(':nth-child(7) > .page-numbers').click()
+        cy.addProdutos('Kenobi Trail Jacket', 'M', 'Purple', 1)
+        cy.get('.single_add_to_cart_button')
+    });
+
+    it('Deve adicionar mais um produto ao carrinho', () => {
+        //adicionando o último produto ao carrinho
+        cy.get(':nth-child(12) > .page-numbers').click()
+        cy.addProdutos('Troy Yoga Short', '36', 'Green', 1)
+        cy.get('.single_add_to_cart_button')
+    });
 })
