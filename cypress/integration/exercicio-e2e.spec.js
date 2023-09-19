@@ -9,8 +9,20 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         Preenchendo todas opções no checkout
         E validando minha compra ao final */
 
+    var faker = require('faker');
+
+    let nameFaker = faker.name.firstName()
+    let lastNameFaker = faker.name.lastName()
+    let companyNameFaker = faker.company.companyName()
+    let phoneFaker = faker.phone.phoneNumber('11 87552-4937')
+    let mailFaker = faker.internet.email()
+
     beforeEach(() => {
-        cy.visit('/')
+        cy.visit('minha-conta')
+        cy.fixture('perfil').then(dados => {
+            cy.login(dados.usuario, dados.senha)
+        cy.visit('/produtos')
+        })
     });
 
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
