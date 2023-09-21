@@ -1,0 +1,33 @@
+[
+    {
+        "nome": "Luan",
+        "sobrenome": "Alves",
+        "empresa": "Apple",
+        "pais": "Brasil",
+        "endereco": "Rua Apucarana",
+        "numero": "274",
+        "cidade": "Salvador",
+        "estado": "Bahia",
+        "cep": "01234669",
+        "telefone": "71986654785",
+        "email": "luan.alves@teste.com",
+        "observacoes": "deixar na portaria aos cuidados do cliente",
+        "pagamento": "Cheque"
+    },
+
+    {
+        "nome": "Bruna",
+        "sobrenome": "Moraes",
+        "empresa": "Volkswagen",
+        "pais": "Brasil",
+        "endereco": "Rua Louveira",
+        "numero": "321",
+        "cidade": "Maringá",
+        "estado": "Paraná",
+        "cep": "05896365",
+        "telefone": "25874463215",
+        "email": "bruna.moraes@teste.com",
+        "observacoes": "cuidado especial pois o produto é frágil",
+        "pagamento": "Transferência bancária"
+    }
+]
