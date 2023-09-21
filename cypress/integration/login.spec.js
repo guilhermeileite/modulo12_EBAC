@@ -1,5 +1,4 @@
 /// <reference types="cypress" />
-import CheckoutPage from "../support/page_objects/checkout.page";
 let dadosLogin
 
 context('Funcionalidade Login', () => {
