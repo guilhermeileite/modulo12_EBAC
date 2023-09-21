@@ -18,6 +18,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.fixture('perfil').then(dados => {
             cy.login(dados.usuario, dados.senha)
         cy.visit('/produtos')
+        //Adicionando produtos ao carrinho usando comandos customizados
         cy.addProdutos('Abominable Hoodie', 'M', 'Red', 4)
         cy.get('.single_add_to_cart_button').click()
         cy.get('.woocommerce-message').should('contain', '4 × “Abominable Hoodie” foram adicionados no seu carrinho.')
@@ -25,8 +26,10 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('.checkout-button').click()
         cy.get('.woocommerce-info').should('contain', 'Você tem um cupom de desconto?')
 
+        
+
     });
-    
+    //Fazendo o checkout usando massa de dados
         CheckoutPage.editarDadosCheckout(
             dadosCheckout[1].nome,
             dadosCheckout[1].sobrenome,
@@ -42,7 +45,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             dadosCheckout[1].observacoes
 
         )
-
+    //Finalizando a compra
     it('Finalizando compra', () => {
         cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
     });
