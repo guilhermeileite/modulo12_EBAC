@@ -18,12 +18,17 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.fixture('perfil').then(dados => {
             cy.login(dados.usuario, dados.senha)
         cy.visit('/produtos')
+<<<<<<< HEAD
+=======
+        //Adicionando produtos ao carrinho usando comandos customizados
+>>>>>>> 72f29695b7e94d0627bd23ab266ae23db7e3cb9b
         cy.addProdutos('Abominable Hoodie', 'M', 'Red', 4)
         cy.get('.single_add_to_cart_button').click()
         cy.get('.woocommerce-message').should('contain', '4 × “Abominable Hoodie” foram adicionados no seu carrinho.')
         cy.get('.woocommerce-message > .button').click()
         cy.get('.checkout-button').click()
         cy.get('.woocommerce-info').should('contain', 'Você tem um cupom de desconto?')
+<<<<<<< HEAD
 
     });
     
@@ -47,4 +52,30 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
     });
 
+=======
+
+        
+
+    });
+    //Fazendo o checkout usando massa de dados
+        CheckoutPage.editarDadosCheckout(
+            dadosCheckout[1].nome,
+            dadosCheckout[1].sobrenome,
+            dadosCheckout[1].empresa,
+            dadosCheckout[1].pais,
+            dadosCheckout[1].endereco,
+            dadosCheckout[1].numero,
+            dadosCheckout[1].cidade,
+            dadosCheckout[1].estado,
+            dadosCheckout[1].cep,
+            dadosCheckout[1].telefone,
+            dadosCheckout[1].email,
+            dadosCheckout[1].observacoes
+
+        )
+    //Finalizando a compra
+        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
+    
+
+>>>>>>> 72f29695b7e94d0627bd23ab266ae23db7e3cb9b
 })
